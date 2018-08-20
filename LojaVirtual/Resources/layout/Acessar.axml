@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:id="@+id/linearLayout3">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="239.0dp"
+        android:id="@+idAcessar/linearLayout1">
+        <TextView
+            android:gravity="center"           
+			android:text="Loja Virtual"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_width="match_parent"
+            android:layout_height="34.5dp"
+            android:id="@+idAcessar/tvTitulo"
+            android:background="#000000" />
+        <TextView
+            android:gravity="center"
+            android:text=""
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+idAcessar/lblMensagem"
+            android:textColor="@android:color/holo_red_dark"
+            android:padding="10dp"
+            android:backgroundTint="#00000000"
+            android:textSize="11dp"
+            android:textStyle="italic"
+            android:typeface="sans" />
+        <TextView
+			android:layout_marginLeft="65.0dp"
+            android:text="E-mail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+idAcessar/tvEmail"
+            android:layout_marginTop="34.0dp"
+            android:textColor="#000000" />
+		<EditText
+			android:layout_marginLeft="65.0dp"
+			android:layout_width="250.0dp"
+			android:layout_height="wrap_content"
+			android:background="#CCCCCC"
+			android:id="@+idAcessar/txtEmail" />
+        <TextView
+			android:layout_marginLeft="65.0dp"
+            android:text="Senha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+idAcessar/tvSenha"
+            android:layout_marginTop="14.5dp"
+            android:textColor="#000000" />
+		<EditText
+			android:inputType="textPassword"
+			android:layout_marginLeft="65.0dp"			
+			android:layout_width="250.0dp"
+			android:layout_height="wrap_content"
+			android:background="#CCCCCC"
+			android:id="@+idAcessar/txtSenha" />
+    </LinearLayout>
+    <LinearLayout
+		android:gravity="center"		
+        android:orientation="horizontal"
+        android:layout_width="198.5dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout2"
+        android:layout_marginLeft="85.5dp">
+        <Button
+			android:gravity="center"
+            android:text="Acessar"
+            android:layout_width="130dp"
+            android:layout_height="38.0dp"
+            android:id="@+idAcessar/btnAcessar"
+            android:background="#000000"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF" />
+     </LinearLayout>
+	 <LinearLayout
+		android:gravity="center"		
+        android:orientation="horizontal"
+        android:layout_width="198.5dp"
+        android:layout_height="5dp"
+        android:layout_marginLeft="85.5dp">
+	 </LinearLayout>
+	 <LinearLayout
+		android:gravity="center"		
+        android:orientation="horizontal"
+        android:layout_width="198.5dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="85.5dp">
+		<Button
+			android:gravity="center"
+			android:text="Criar Conta"
+			android:layout_width="130dp"
+			android:layout_height="38.0dp"
+			android:id="@+idAcessar/btnCadastrar"
+			android:background="#000000"
+			android:textAllCaps="false"
+			android:textColor="#FFFFFF"	/>
+	 </LinearLayout>
+</LinearLayout>
