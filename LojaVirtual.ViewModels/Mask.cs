@@ -14,7 +14,7 @@ using Java.Lang;
 
 namespace LojaVirtual.ViewModels
 {
-
+    // Classe que disponibiliza métodos para máscara de campos
     public class Mask : Java.Lang.Object, ITextWatcher
     {
         private readonly EditText _editText;

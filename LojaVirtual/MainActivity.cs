@@ -52,26 +52,30 @@ namespace LojaVirtual
 
     public partial class MainActivity
     {
+        // Cria uma instância da classe que acessa os serviços
         IContaWS contaWS = new ContaService( );
 
         #region [ Metodos ]
 
+        // Faz o login de um cliente
         protected async void LoginAsync( object sender, EventArgs e )
         {
             Mensagem.Text = "";
 
+            // Valida se os dados de acesso foram preenchidos
             if ( string.IsNullOrEmpty( Email.Text ) || string.IsNullOrEmpty( Senha.Text ) )
             {
                 Mensagem.Text = "Por favor, preencher o e-mail ou senha";
                 return;
             }
 
-
+            // Cria a classe com os dados de acesso informados pelo cliente
             AcessarViewModel model = new AcessarViewModel( );
             model.Email = Email.Text;
             model.Senha = Senha.Text;
             try
             {
+                // Faz a chamada na classe que acessa os serviços para validar o login
                 ContaViewModel conta = await ObterContaAsync( model );
                 if ( conta == null || conta.DataExclusao.HasValue )
                 {
@@ -79,6 +83,7 @@ namespace LojaVirtual
                 }
                 else
                 {
+                    // Caso os dados de acesso sejam válidos, retorna os dados
                     var contaSerializada = JsonConvert.SerializeObject( conta );
 
                     var acConta = new Intent( this, typeof( ContaActivity ) );
@@ -95,9 +100,12 @@ namespace LojaVirtual
             
         }
 
+        // Consulta os serviços para fazer o login de um cliente
         protected async Task<ContaViewModel> ObterContaAsync( AcessarViewModel model )
         {
+            // Faz a chamada na classe que acessa os serviços para obter os dados da conta de um cliente
             ContaViewModel conta = await contaWS.ObterContaAsync( model );
+
             return conta;
         }
 

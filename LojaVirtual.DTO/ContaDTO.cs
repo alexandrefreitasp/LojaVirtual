@@ -12,6 +12,7 @@ using Android.Widget;
 
 namespace LojaVirtual.DTO
 {
+    // DTO que representa o objeto de Conta que é utilizado nas comunicações entre o app e o serviço
     public class ContaDTO
     {
         public int Id { get; set; }

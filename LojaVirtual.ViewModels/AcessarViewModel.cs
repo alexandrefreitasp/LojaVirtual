@@ -6,6 +6,7 @@ using System.Text;
 
 namespace LojaVirtual.ViewModels
 {
+    // ViewModel para os dados de acesso do cliente
     public class AcessarViewModel
     {
         public string Email { get; set; }

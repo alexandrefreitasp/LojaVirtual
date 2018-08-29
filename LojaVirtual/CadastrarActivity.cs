@@ -62,19 +62,24 @@ namespace LojaVirtual
 
     public partial class CadastrarActivity : Activity
     {
+        // Cria uma instância da classe que acessa os serviços
         IContaWS contaWS = new ContaService( );
 
         #region [ Metodos ]
 
+        // Salvar os dados de uma conta
         protected async void SalvarAsync( object sender, EventArgs e )
         {
             Mensagem.Text = "";
+
+            // Valida se as informações do formulário são válidas
             if ( !ValidarForm( ) )
             {
                 Mensagem.Text = "Existem campos do formulário sem preencher";
                 return;
             }
 
+            // Verifica se já existe algum registro cadastrado com o CPF informado
             ContaViewModel conta = await ObterContaAsync( CPF.Text );
 
             if ( conta == null || conta != null && conta.Id > 0)
@@ -83,6 +88,7 @@ namespace LojaVirtual
                 return;
             }
 
+            // Cria um ContaViewModel com os dados informados 
             ContaViewModel model = new ContaViewModel( );
             model.Nome = Nome.Text;
             model.CPF = Mask.Unmask(CPF.Text);
@@ -93,6 +99,7 @@ namespace LojaVirtual
             model.Municipio = Municipio.Text;
             model.Telefone = Telefone.Text;
 
+            // Faz a chamada na classe que acessa os serviços para criar um cliente
             conta = await contaWS.SalvarContaAsync( model );
 
             Toast.MakeText( this, "Operação Realizada com Sucesso!", ToastLength.Long ).Show( );
@@ -100,12 +107,16 @@ namespace LojaVirtual
 
         }
 
+        // Obtém os dados de uma conta com base no CPF informado
         protected async Task<ContaViewModel> ObterContaAsync( string CPF )
         {
+            // Faz a chamada na classe que acessa os serviços para obter os dados do cliente
             ContaViewModel conta = await contaWS.ObterContaAsync( CPF );
+
             return conta;
         }
 
+        // Valida as informações do formulário
         protected bool ValidarForm( )
         {
 

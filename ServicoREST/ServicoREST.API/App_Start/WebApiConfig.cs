@@ -22,6 +22,7 @@ namespace ServicoREST.API
                 defaults: new { id = RouteParameter.Optional }
             );
 
+            // Adiciona o tratamento de erros genérico
             config.Services.Add(typeof(IExceptionLogger), new ServicoRESTExceptionLogger());
         }
     }

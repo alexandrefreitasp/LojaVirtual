@@ -12,6 +12,7 @@ using Android.Widget;
 
 namespace LojaVirtual.ViewModels
 {
+    // ViewModel para os dados cadastrais do cliente
     public class ContaViewModel
     {
         public int Id { get; set; }

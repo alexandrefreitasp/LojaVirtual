@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 
 namespace LojaVirtual.Servicos.Contratos
 {
+    // Interfavce que possui os métodos disponibilizados pelo serviço de Contas
     public interface IContaWS
     {
         Task<ContaViewModel> ObterContaAsync( AcessarViewModel model );

@@ -66,17 +66,21 @@ namespace LojaVirtual
 
     public partial class ContaActivity
     {
+        // Cria uma instância da classe que acessa os serviços
         IContaWS contaWS = new ContaService( );
 
         #region [ Metodos ]
 
+        // Poopula os campos na tela do app
         private void PopularLayout( )
         {
+            // obtém os dados da conta e verifica se estão preenchidos
             string contraSerializada = Intent.GetStringExtra( "conta" );
 
             if ( contraSerializada == null && String.IsNullOrEmpty( contraSerializada ) )
                 this.Finish( );
 
+            // popula os campos com base nas informações do ContaViewModel
             ContaViewModel conta = JsonConvert.DeserializeObject<ContaViewModel>( contraSerializada );
             IdConta.Text = conta.Id.ToString( );
             Nome.Text = conta.Nome;
@@ -91,15 +95,19 @@ namespace LojaVirtual
 
         }
 
+        // Salva os dados de um cliente
         protected async void SalvarAsync( object sender, EventArgs e )
         {
             Mensagem.Text = "";
+
+            // Valida se o formulário está válido
             if ( !ValidarForm( ) )
             {
                 Mensagem.Text = "Existem campos do formulário sem preencher";
                 return;
             }
 
+            // Cria um ContaViewModel com os dados informados 
             ContaViewModel model = new ContaViewModel( );
             model.Id = Convert.ToInt32( IdConta.Text );
             model.Nome = Nome.Text;
@@ -112,12 +120,14 @@ namespace LojaVirtual
             model.Telefone = Telefone.Text;
             model.DataCadastro = DateTime.Parse( DataCadastro.Text );
 
+            // Faz a chamada na classe que acessa os serviços para atualizar os dados do cliente
             ContaViewModel conta = await contaWS.AtualizarContaAsync( model );
 
             Toast.MakeText( this, "Operação Realizada com Sucesso!", ToastLength.Long ).Show( );
 
         }
 
+        // Exclui a conta de um cliente
         protected void Excluir( object sender, EventArgs e )
         {
             AlertDialog.Builder alert = new AlertDialog.Builder( this );
@@ -125,6 +135,7 @@ namespace LojaVirtual
             alert.SetMessage( "Deseja realmente excluir a conta?" );
             alert.SetPositiveButton( "Sim", delegate
             {
+                // Caso o cliente clique em sim, faz a chamada na classe que acessa os serviços para processar a exclusão na API
                 contaWS.ExcluirContaAsync( Convert.ToInt32( IdConta.Text ) );
                 Toast.MakeText( this, "Conta excluída com sucesso!", ToastLength.Long ).Show( );
                 alert.Dispose( );
@@ -139,7 +150,7 @@ namespace LojaVirtual
 
         }
 
-
+        // Valida se os dados do formulário são válidos
         protected bool ValidarForm( )
         {
 
